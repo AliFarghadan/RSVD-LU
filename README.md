@@ -178,7 +178,7 @@ Make sure you have the following prerequisite modules loaded/installed:
 ## RSVD-LU variables
 
 - `RootDir`: Specifies the root directory path for the simulation.
-- `ResultsDir`: Defines the path to the results directory where output files will be saved. This directory must exist within `RootDir`. If it does not, the system will create the directory at the specified path. Ensure you have write access to the root directory, or an error message will be displayed.
+- `ResultsDir`: Defines the path to the results directory where output files will be saved. This directory must exist within `RootDir`.
 - `OperatorDir`: Specifies the directory path for the linearized operator matrix. If the operator is located in the `RootDir`, you only need to provide the operator name (e.g., `A_GL`). Otherwise, specify the relative path to the operator from `RootDir` (e.g., `matrices/A_GL`).
 - `k`: The number of test vectors.
 - `q`: The number of power iterations.
