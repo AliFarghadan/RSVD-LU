@@ -1,0 +1,84 @@
+
+
+# Root directory (string)
+# This directory must exist before the simulation
+RootDir:            /path/to/root/directory/ 
+
+# Results directory (string)
+# The resolvent modes/gains will be saved in RootDir/ResultsDir/RSVDLU_ResolventModes_<int>
+# This directory must exist before the simulation
+ResultsDir:         /path/to/results/ 
+
+# The linearized operator (string)
+# The operator directory is defined as RootDir/OperatorDir
+# This directory must exist before the simulation, OperatorDir can be same as ResultsDir
+OperatorDir:        /path/to/A # expected a matrix saved in binary format
+
+# Number of test vectors (integer)
+k:                  10
+
+# Number of power iterations (integer)
+q:                  1
+
+# Minimum frequency (real)
+w_min:              -1.00
+
+# Maximum frequency (real)
+w_min:              1.00
+
+# frequency resolution (real > 0)
+dw:                 0.05
+
+# Convert frequencies to angular frequencies (boolean)
+# if true: w <-- 2*pi*w, otherwise, w <-- w
+TwoPI:              false
+
+# Display options (integer 0 <= Display <= 2)
+Display:            2
+
+# Discounting flag (boolean)
+# Applies discounting for unstable linear systems, A <-- A - beta I
+DiscFlg:            false
+
+# beta value when "DiscFlg = True", otherwise beta is ignored (real > 0)
+beta:               0.1
+
+# Seeding random number to replicate data if needed (integer)
+RandSeed:           14
+
+# Inverse input weight flag (boolean)
+# The inverse input weight directory must exist before the simulation if true, otherwise ignored
+InvInputWeightFlg:  false
+# Inverse input weight directory when "InvInputWeightFlg = True" (string)
+# This directory is defined as RootDir/InvInputWeightDir
+InvInputWeightDir:  /path/to/W_f_sqrt_inv # expected a matrix saved in binary format
+
+# Output weight flag (boolean)
+# The input weight directory must exist before the simulation if true, otherwise ignored
+OutputWeightFlg:    false
+# Output weight directory when when "OutputWeightFlg = True" (string)
+# This directory is defined as RootDir/OutputWeightDir
+OutputWeightDir:    /path/to/W_q_sqrt # expected a matrix saved in binary format
+
+# Inverse output weight flag (boolean)
+# The inverse input weight directory must exist before the simulation if true, otherwise ignored
+InvOutputWeightFlg: false
+# Inverse output weight directory when "InvOutputWeightFlg = True" (string)
+# This directory is defined as RootDir/InvOutputWeightDir
+InvOutputWeightDir: /path/to/W_q_sqrt_inv # expected a matrix saved in binary format
+
+# Input matrix flag (boolean)
+# The input matrix directory must exist before the simulation if true, otherwise ignored
+InputMatrixFlg:     false
+# Input matrix directory when when "InputMatrixFlg = True" (string)
+# This directory is defined as RootDir/InputMatrixDir
+InputMatrixDir:     /path/to/B # expected a matrix saved in binary format
+
+# Output matrix flag (boolean)
+# The output matrix directory must exist before the simulation if true, otherwise ignored
+OutputMatrixFlg:    false
+# Output matrix directory when when "OutputMatrixFlg = True" (string)
+# This directory is defined as RootDir/OutputMatrixDir
+OutputMatrixDir:    /path/to/C # expected a matrix saved in binary format
+
+
