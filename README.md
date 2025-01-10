@@ -1,5 +1,5 @@
 
-# RSVD-LU for Resolvent Analysis 
+# RSVD-LU for resolvent analysis 
 
 This repository contains the implementation of the Randomized Singular Value Decomposition (RSVD) tailored for resolvent analysis, referred to as **RSVD-LU**. The code computes resolvent modes over a user-defined range of frequencies. The computation process is detailed in our [paper](https://arxiv.org/pdf/2309.04617.pdf), drawing inspiration from the methodology in [Randomized Resolvent Analysis](https://journals.aps.org/prfluids/abstract/10.1103/PhysRevFluids.5.033902). 
 
@@ -45,13 +45,13 @@ By the end of the simulation, resolvent modes (*i.e.*, gains, forcing, and respo
 
 ---
 
-## Installation and Running RSVD-LU
+## Installation and running RSVD-LU
 
 ### Installation
 
 The installation process follows the steps outlined in the RSVD-Delta-t README, with variations in source codes and input variables due to algorithmic differences. Refer to the [RSVD-Delta-t README](https://github.com/AliFarghadan/RSVD-Delta-t/tree/Resolvent-analysis/README.md) for installation instructions. 
 
-### Additional Dependency: MUMPS
+### Additional dependency: MUMPS
 
 A key difference in compiling PETSc/SLEPc for RSVD-LU is the inclusion of the **MUMPS** package, required for parallel computation of LU decomposition for sparse matrices. Below is a recommended PETSc configuration:
 
@@ -165,7 +165,7 @@ OutputMatrixDir:    /path/to/C # expected a matrix saved in binary format
 
 - Error messages will be displayed, and the simulation will terminate if an error occurs.
 
-### Prerequisite Modules
+### Prerequisite modules
 
 Make sure you have the following prerequisite modules loaded/installed:
 
@@ -175,7 +175,7 @@ Make sure you have the following prerequisite modules loaded/installed:
 
 ---
 
-### $\text{RSVD}-\Delta t$ Variables
+### RSVD-LU variables
 
 - `RootDir`: Specifies the root directory path for the simulation.
 - `ResultsDir`: Defines the path to the results directory where output files will be saved. This directory must exist within `RootDir`. If it does not, the system will create the directory at the specified path. Ensure you have write access to the root directory, or an error message will be displayed.
@@ -212,7 +212,7 @@ Make sure you have the following prerequisite modules loaded/installed:
 
 ---
 
-### Saving Resolvent Modes
+### Saving resolvent modes and gains
 
 - A folder is created in the results directory with a fixed prefix `RSVDLU_ResolventModes_<int>`, where `<int>` is an integer starting from 0. If `RSVDLU_ResolventModes_i` exists, the code increments the integer until a unique folder name is found, ensuring that results from different simulations are not overwritten.
 
@@ -220,7 +220,7 @@ Make sure you have the following prerequisite modules loaded/installed:
 - The indices correspond to frequencies within $\Omega = \omega_{\text{min}}:dw:\omega_{\text{max}}$ starting with 1.
 - For instance, `U_hat_iw1_allK`, `V_hat_iw1_allK`, and `S_hat_iw1_allK` contain the response, forcing, and gains, respectively, associated with the first frequency ($\omega$ = `w_min`).
 
-## Practical Recommendation
+## Practical recommendation
 
 For real-valued matrices, the resolvent modes are symmetric around $\omega = 0$. Hence, you can set `w_min = 0` without losing generality.
 
