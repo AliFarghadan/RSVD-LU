@@ -220,6 +220,57 @@ Make sure you have the following prerequisite modules loaded/installed:
 - The indices correspond to frequencies within $\Omega = \omega_{\text{min}}:dw:\omega_{\text{max}}$, with the starting index set to 1.
 - For instance, `U_hat_iw1_allK`, `V_hat_iw1_allK`, and `S_hat_iw1_allK` contain the response, forcing, and gains, respectively, associated with the first frequency ($\omega$ = `w_min`).
 
+## Makefile usage
+
+The `makefile` is used to build the executable from the source code. First, navigate to the directory of the RSVD-LU package, where you will find the `makefile`, `variables.yaml`, and a `SourceCodes` folder. 
+
+The `variables.yaml` file serves as the interface for defining all parameters before computing the modes.
+
+The `SourceCodes` directory contains all the functions implemented for our algorithm. These files do not need to be modified unless you wish to contribute or add new features. Do not alter the relative path between the `makefile` and the `SourceCodes` folder, as this will prevent the executable from being created.
+
+You can now use the following commands:
+
+- `make` to build the executable
+- `make clean` to remove the executable
+
+If your `PETSC_ARCH` name differs from `complex-opt`, specify it in the `make` command as follows:
+
+```bash
+make PETSC_ARCH=<PETSc-arch-name>
+```
+
+**Note:** The default `make` command assumes `PETSC_ARCH=complex-opt`. If using a different name, you must include it in the command.
+
+This step creates the executable, allowing you to run the RSVD-LU algorithm on your local machine or HPC cluster. You will now find the `RSVDLU` executable ready to use in the same directory.
+
+## Example Jobfile
+
+If you are running on your local machine, first navigate to the directory containing the executable, then you can run the job using the following command:
+
+```bash
+mpiexec RSVDLU -inputs variables.yaml
+```
+
+To illustrate the usage of the $\text{RSVD}-\Delta t$ algorithm on an HPC cluster, we provide an example jobfile script below.
+
+```bash
+#!/bin/bash
+#SBATCH --job-name=<name>
+#SBATCH --nodes=<count>
+#SBATCH --ntasks-per-node=<count>
+#SBATCH --mem=<memory>
+#SBATCH --time=<dd-hh:mm:ss>
+
+module load gcc/<version> openmpi/<version>
+
+cd /path/to/executable/
+make PETSC_ARCH=complex-opt
+
+mpiexec RSVDLU -inputs variables.yaml 
+```
+
+Note that you may need to use `srun` or `mpirun` instead of `mpiexec` depending on your installation and cluster configurations. Moreover, `make PETSC_ARCH=complex-opt` is required only once; it compiles the source files to create the executable or does nothing if the executable is already compiled. Finally, you might encounter slight differences in defining the number of nodes, tasks, CPUs, memory, etc., based on your cluster specifications. This jobfile serves as a sample case.
+
 ## Practical recommendation
 
 For real-valued matrices, the resolvent modes are symmetric around $\omega = 0$. Hence, you can set `w_min = 0` without losing generality.
