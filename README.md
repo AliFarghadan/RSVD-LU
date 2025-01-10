@@ -88,13 +88,13 @@ k:                  10
 # Number of power iterations (integer)
 q:                  1
 
-# Minimum frequency to resolve (real)
+# Minimum frequency (real)
 w_min:              -1.00
 
-# Maximum frequency to resolve (real)
+# Maximum frequency (real)
 w_min:              1.00
 
-# frequency rsolution (real > 0)
+# frequency resolution (real > 0)
 dw:                 0.05
 
 # Convert frequencies to angular frequencies (boolean)
@@ -182,7 +182,7 @@ Make sure you have the following prerequisite modules loaded/installed:
 - `OperatorDir`: Specifies the directory path for the linearized operator matrix. If the operator is located in the `RootDir`, you only need to provide the operator name (e.g., `A_GL`). Otherwise, specify the relative path to the operator from `RootDir` (e.g., `matrices/A_GL`).
 - `k`: The number of test vectors.
 - `q`: The number of power iterations.
-- `w_min`: The minimum frequency to resolve.
+- `w_min`: The minimum frequency.
 - `w_max`: The maximum frequency.
 - `dw`: Frequency step size.
 - `TwoPI`: Indicates whether to convert frequencies to angular frequencies. If `true`, the output frequencies are converted to angular frequencies by multiplying by $2\pi$.
