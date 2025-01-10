@@ -24,7 +24,7 @@ q:                  1
 w_min:              -1.00
 
 # Maximum frequency (real)
-w_min:              1.00
+w_max:              1.00
 
 # frequency resolution (real > 0)
 dw:                 0.05
