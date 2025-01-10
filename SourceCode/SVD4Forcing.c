@@ -69,7 +69,7 @@ PetscErrorCode SVD4Forcing(RSVD_matrices *RSVDM, RSVD_vars *RSVD, Weight_matrice
 	*/
 
 	ierr = PetscTime(&t1);CHKERRQ(ierr);
-	if (RSVD->Display) ierr = PetscPrintf(PETSC_COMM_WORLD,"\n*** Saving the forcing modes begins! ***\n");CHKERRQ(ierr);
+	if (RSVD->Display) ierr = PetscPrintf(PETSC_COMM_WORLD,"\n*** Saving the forcing modes and gains begins! ***\n");CHKERRQ(ierr);
 
 	ierr = PetscSNPrintf((char*)&dirs->IO_dir,PETSC_MAX_PATH_LEN,"%s%s%d%s",dirs->FolderDir,"S_hat_iw",(int) iw+1,"_allK");CHKERRQ(ierr);
 	ierr = PetscViewerBinaryOpen(PETSC_COMM_WORLD,dirs->IO_dir,FILE_MODE_WRITE,&fd);CHKERRQ(ierr);
@@ -91,7 +91,7 @@ PetscErrorCode SVD4Forcing(RSVD_matrices *RSVDM, RSVD_vars *RSVD, Weight_matrice
 	hh   = (t2-t1)/3600;
 	mm   = (t2-t1-3600*hh)/60;
 	ss   = t2-t1-3600*hh-mm*60;
-	if (RSVD->Display) ierr = PetscPrintf(PETSC_COMM_WORLD,"*** Saving the forcing modes elapsed time = %02d:%02d:%02d ***\n\n", (int)hh, (int)mm, (int)ss);CHKERRQ(ierr);
+	if (RSVD->Display) ierr = PetscPrintf(PETSC_COMM_WORLD,"*** Saving the forcing modes and gains elapsed time = %02d:%02d:%02d ***\n\n", (int)hh, (int)mm, (int)ss);CHKERRQ(ierr);
 
 	PetscFunctionReturn(0);
 

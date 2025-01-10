@@ -117,7 +117,7 @@ int main(int argc,char **args)
 	hh   = (t2-t1)/3600;
 	mm   = (t2-t1-3600*hh)/60;
 	ss   = t2-t1-3600*hh-mm*60;
-	ierr = PetscPrintf(PETSC_COMM_WORLD,"\nThe results directory: %s\n\n",dirs.FolderDir);CHKERRQ(ierr);
+	ierr = PetscPrintf(PETSC_COMM_WORLD,"The results directory: %s\n\n",dirs.FolderDir);CHKERRQ(ierr);
 	ierr = PetscPrintf(PETSC_COMM_WORLD,"DONE :))\n\n*** Entire simulation elapsed time = %02d:%02d:%02d ***\n", (int)hh, (int)mm, (int)ss);CHKERRQ(ierr);
 
 	ierr = PetscOptionsClear(NULL);CHKERRQ(ierr);
