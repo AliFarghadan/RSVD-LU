@@ -251,7 +251,7 @@ If you are running on your local machine, first navigate to the directory contai
 mpiexec RSVDLU -inputs variables.yaml
 ```
 
-To illustrate the usage of the $\text{RSVD}-\Delta t$ algorithm on an HPC cluster, we provide an example jobfile script below.
+To illustrate the usage of the RSVD-LU algorithm on an HPC cluster, we provide an example jobfile script below.
 
 ```bash
 #!/bin/bash
