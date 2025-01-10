@@ -45,8 +45,6 @@ $$
 
 By the end of the simulation, resolvent modes (*i.e.*, gains, forcing, and response) are computed across all frequencies. In case $B$, $C$, $W_q^{-1/2}$, $W_q^{1/2}$, or $W_f^{-1/2}$ are not defined, we assume they are identity matrices.
 
----
-
 ## Installation of RSVD-LU
 
 The installation process follows the steps outlined in the RSVD-Delta-t README, with variations in source codes and input variables due to algorithmic differences. Refer to the [RSVD-Delta-t README](https://github.com/AliFarghadan/RSVD-Delta-t/tree/Resolvent-analysis/README.md) for installation instructions. 
@@ -173,8 +171,6 @@ Make sure you have the following prerequisite modules loaded/installed:
 - A **C++ compiler**
 - **PETSc** and **SLEPc** packages
 
----
-
 ## RSVD-LU variables
 
 - `RootDir`: Specifies the root directory path for the simulation.
@@ -209,8 +205,6 @@ Make sure you have the following prerequisite modules loaded/installed:
 - `RandSeed`: Indicates the seed number for random number generation. Using the same number of cores and `RandSeed` value allows for repeatable results in simulations.
 - `DiscFlg`: A boolean flag indicating whether to use a discounting strategy.
 - `beta`: Specifies the `beta` value when `DiscFlg = true`. It is ignored if `DiscFlg = false`.
-
----
 
 ## Saving resolvent modes and gains
 
