@@ -47,9 +47,7 @@ By the end of the simulation, resolvent modes (*i.e.*, gains, forcing, and respo
 
 ---
 
-## Installation and running RSVD-LU
-
-### Installation
+## Installation of RSVD-LU
 
 The installation process follows the steps outlined in the RSVD-Delta-t README, with variations in source codes and input variables due to algorithmic differences. Refer to the [RSVD-Delta-t README](https://github.com/AliFarghadan/RSVD-Delta-t/tree/Resolvent-analysis/README.md) for installation instructions. 
 
