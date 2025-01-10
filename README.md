@@ -177,27 +177,27 @@ Make sure you have the following prerequisite modules loaded/installed:
 
 ### $\text{RSVD}-\Delta t$ Variables
 
-- **`RootDir`**: Specifies the root directory path for the simulation.
-- **`ResultsDir`**: Defines the path to the results directory where output files will be saved. This directory must exist within `RootDir`. If it does not, the system will create the directory at the specified path. Ensure you have write access to the root directory, or an error message will be displayed.
-- **`OperatorDir`**: Specifies the directory path for the linearized operator matrix. If the operator is located in the `RootDir`, you only need to provide the operator name (e.g., `A_GL`). Otherwise, specify the relative path to the operator from `RootDir` (e.g., `matrices/A_GL`).
-- **`k`**: The number of test vectors.
-- **`q`**: The number of power iterations.
-- **`w_min`**: The minimum frequency to resolve.
-- **`w_max`**: The maximum frequency.
-- **`dw`**: Frequency step size.
-- **`TwoPI`**: Indicates whether to convert frequencies to angular frequencies. If `true`, the output frequencies are converted to angular frequencies by multiplying by $2\pi$.
-- **`InputForcingDir`**: Defines the path to the input forcing $(\hat{F})$ directory.
-- **`InvInputWeightFlg`**: Determines whether the inverse input weight is used.
-- **`InvInputWeightDir`**: Defines the path to the inverse input weight $(W_f^{-1/2})$ directory.
-- **`InputMatrixFlg`**: Determines whether the input matrix is used.
-- **`InputMatrixDir`**: Defines the path to the input matrix $(B)$ directory.
-- **`InvOutputWeightFlg`**: Determines whether the inverse output weight is used.
-- **`InvOutputWeightDir`**: Defines the path to the inverse output weight $(W_q^{-1/2})$ directory.
-- **`OutputWeightFlg`**: Determines whether the output weight is used.
-- **`OutputWeightDir`**: Defines the path to the output weight $(W_q^{1/2})$ directory.
-- **`OutputMatrixFlg`**: Determines whether the output matrix is used.
-- **`OutputMatrixDir`**: Defines the path to the output matrix $(C)$ directory.
-- **`Display`**: Controls the amount of information printed during computation, ranging from 0 (no output) to 2 (verbose output):
+- `RootDir`: Specifies the root directory path for the simulation.
+- `ResultsDir`: Defines the path to the results directory where output files will be saved. This directory must exist within `RootDir`. If it does not, the system will create the directory at the specified path. Ensure you have write access to the root directory, or an error message will be displayed.
+- `OperatorDir`: Specifies the directory path for the linearized operator matrix. If the operator is located in the `RootDir`, you only need to provide the operator name (e.g., `A_GL`). Otherwise, specify the relative path to the operator from `RootDir` (e.g., `matrices/A_GL`).
+- `k`: The number of test vectors.
+- `q`: The number of power iterations.
+- `w_min`: The minimum frequency to resolve.
+- `w_max`: The maximum frequency.
+- `dw`: Frequency step size.
+- `TwoPI`: Indicates whether to convert frequencies to angular frequencies. If `true`, the output frequencies are converted to angular frequencies by multiplying by $2\pi$.
+- `InputForcingDir`: Defines the path to the input forcing $(\hat{F})$ directory.
+- `InvInputWeightFlg`: Determines whether the inverse input weight is used.
+- `InvInputWeightDir`: Defines the path to the inverse input weight $(W_f^{-1/2})$ directory.
+- `InputMatrixFlg`: Determines whether the input matrix is used.
+- `InputMatrixDir`: Defines the path to the input matrix $(B)$ directory.
+- `InvOutputWeightFlg`: Determines whether the inverse output weight is used.
+- `InvOutputWeightDir`: Defines the path to the inverse output weight $(W_q^{-1/2})$ directory.
+- `OutputWeightFlg`: Determines whether the output weight is used.
+- `OutputWeightDir`: Defines the path to the output weight $(W_q^{1/2})$ directory.
+- `OutputMatrixFlg`: Determines whether the output matrix is used.
+- `OutputMatrixDir`: Defines the path to the output matrix $(C)$ directory.
+- `Display`: Controls the amount of information printed during computation, ranging from 0 (no output) to 2 (verbose output):
   - `Display = 0`: Minimal output with no information displayed.
   - `Display = 1`: Standard output, displaying:
     - problem information
@@ -206,9 +206,9 @@ Make sure you have the following prerequisite modules loaded/installed:
     - Elapsed time of saving modes
     - Estimated remaining time
   - `Display = 2`: Detailed output, including everything from `Display = 1`, plus the elapsed time of solving LU-decomposed system for every test vector.
-- **`RandSeed`**: Indicates the seed number for random number generation. Using the same number of cores and `RandSeed` value allows for repeatable results in simulations.
-- **`DiscFlg`**: A boolean flag indicating whether to use a discounting strategy.
-- **`beta`**: Specifies the `beta` value when `DiscFlg = true`. It is ignored if `DiscFlg = false`.
+- `RandSeed`: Indicates the seed number for random number generation. Using the same number of cores and `RandSeed` value allows for repeatable results in simulations.
+- `DiscFlg`: A boolean flag indicating whether to use a discounting strategy.
+- `beta`: Specifies the `beta` value when `DiscFlg = true`. It is ignored if `DiscFlg = false`.
 
 ---
 
