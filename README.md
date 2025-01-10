@@ -58,7 +58,7 @@ A key difference in compiling PETSc/SLEPc for RSVD-LU is the inclusion of the **
 --with-64-bit-indices PETSC_ARCH=complex-opt --download-mumps
 ```
 
-**Note**: You may need to modify `RSVDLU.c` function the source code if you have a more suitable solver for your problem.
+**Note**: You may need to modify `RSVDLU.c` function in the source code if you have a more suitable solver for your problem.
 
 ## List of input variables
 
