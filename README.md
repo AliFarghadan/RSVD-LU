@@ -5,6 +5,8 @@ This repository contains the implementation of the Randomized Singular Value Dec
 
 The notation aligns with our paper. The key distinction between this implementation and the original methodology lies in the treatment of response modes: we perform the Singular Value Decomposition (SVD) to obtain the response modes *prior* to the final adjoint action, skipping the QR decomposition and its subsequent recovery. This package is designed for seamless usage with PETSc and SLEPc libraries installed on your system.
 
+RSVD-LU, as discussed in our paper, scales **less** efficiently than $\text{RSVD}-\Delta t$ ([available in our repository](https://github.com/AliFarghadan/RSVD-Delta-t/blob/Resolvent-analysis/)), but it can still be useful for smaller systems and/or for validation purposes.
+
 ---
 
 ## What are we computing?
