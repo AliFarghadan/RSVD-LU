@@ -165,7 +165,7 @@ OutputMatrixDir:    /path/to/C # expected a matrix saved in binary format
 
 - Error messages will be displayed, and the simulation will terminate if an error occurs.
 
-### Prerequisite modules
+## Prerequisite modules
 
 Make sure you have the following prerequisite modules loaded/installed:
 
@@ -175,7 +175,7 @@ Make sure you have the following prerequisite modules loaded/installed:
 
 ---
 
-### RSVD-LU variables
+## RSVD-LU variables
 
 - `RootDir`: Specifies the root directory path for the simulation.
 - `ResultsDir`: Defines the path to the results directory where output files will be saved. This directory must exist within `RootDir`. If it does not, the system will create the directory at the specified path. Ensure you have write access to the root directory, or an error message will be displayed.
@@ -212,7 +212,7 @@ Make sure you have the following prerequisite modules loaded/installed:
 
 ---
 
-### Saving resolvent modes and gains
+## Saving resolvent modes and gains
 
 - A folder is created in the results directory with a fixed prefix `RSVDLU_ResolventModes_<int>`, where `<int>` is an integer starting from 0. If `RSVDLU_ResolventModes_i` exists, the code increments the integer until a unique folder name is found, ensuring that results from different simulations are not overwritten.
 
@@ -271,9 +271,11 @@ mpiexec RSVDLU -inputs variables.yaml
 
 Note that you may need to use `srun` or `mpirun` instead of `mpiexec` depending on your installation and cluster configurations. Moreover, `make PETSC_ARCH=complex-opt` is required only once; it compiles the source files to create the executable or does nothing if the executable is already compiled. Finally, you might encounter slight differences in defining the number of nodes, tasks, CPUs, memory, etc., based on your cluster specifications. This jobfile serves as a sample case.
 
-### Practical recommendation
+## Practical recommendation
 
 For real-valued matrices, the resolvent modes are symmetric around $\omega = 0$. Hence, you can set `w_min = 0` without losing generality.
+
+## Additional resources
 
 ### References
 
