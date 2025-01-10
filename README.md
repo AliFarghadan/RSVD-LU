@@ -271,7 +271,7 @@ mpiexec RSVDLU -inputs variables.yaml
 
 Note that you may need to use `srun` or `mpirun` instead of `mpiexec` depending on your installation and cluster configurations. Moreover, `make PETSC_ARCH=complex-opt` is required only once; it compiles the source files to create the executable or does nothing if the executable is already compiled. Finally, you might encounter slight differences in defining the number of nodes, tasks, CPUs, memory, etc., based on your cluster specifications. This jobfile serves as a sample case.
 
-## Practical recommendation
+### Practical recommendation
 
 For real-valued matrices, the resolvent modes are symmetric around $\omega = 0$. Hence, you can set `w_min = 0` without losing generality.
 
