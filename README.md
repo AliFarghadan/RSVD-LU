@@ -217,7 +217,7 @@ Make sure you have the following prerequisite modules loaded/installed:
 - A folder is created in the results directory with a fixed prefix `RSVDLU_ResolventModes_<int>`, where `<int>` is an integer starting from 0. If `RSVDLU_ResolventModes_i` exists, the code increments the integer until a unique folder name is found, ensuring that results from different simulations are not overwritten.
 
 - For each frequency, response modes (each of size `N × k`) are saved as `U_hat_iw<int>_allK`, where `<int>` represents the integer index of the frequency. Similarly, forcing modes (each of size `N × k`) are saved as `V_hat_iw<int>_allK`. The corresponding gains, containing `k` singular values for each frequency, are saved as `S_hat_iw<int>_allK` of size `k × 1`.
-- The indices correspond to frequencies within $\Omega = \omega_{\text{min}}:dw:\omega_{\text{max}}$ starting with 1.
+- The indices correspond to frequencies within $\Omega = \omega_{\text{min}}:dw:\omega_{\text{max}}$, with the starting index set to 1.
 - For instance, `U_hat_iw1_allK`, `V_hat_iw1_allK`, and `S_hat_iw1_allK` contain the response, forcing, and gains, respectively, associated with the first frequency ($\omega$ = `w_min`).
 
 ## Practical recommendation
