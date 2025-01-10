@@ -9,7 +9,7 @@ The notation aligns with our paper. The key distinction between this implementat
 
 ## What are we computing?
 
-We are using the $\text{RSVD}-\Delta t$ algorithm to compute resolvent modes of the linearized Navier-Stokes (LNS) equations. The resolvent operator $R$ is defined as
+We are using the RSVD-LU algorithm to compute resolvent modes of the linearized Navier-Stokes (LNS) equations. The resolvent operator $R$ is defined as
 
 $$
 R = C(\text{i}\omega I - A)^{-1} B,
@@ -41,7 +41,7 @@ $$
 V = W^{-1/2}_f \tilde{V}.
 $$
 
-By the end of the simulation, resolvent modes (*i.e.*, gains, forcing, and response) are computed using time-stepping across all frequencies. In case $B$, $C$, $W_q^{-1/2}$, $W_q^{1/2}$, or $W_f^{-1/2}$ are not defined, we assume they are identity matrices.
+By the end of the simulation, resolvent modes (*i.e.*, gains, forcing, and response) are computed across all frequencies. In case $B$, $C$, $W_q^{-1/2}$, $W_q^{1/2}$, or $W_f^{-1/2}$ are not defined, we assume they are identity matrices.
 
 ---
 
