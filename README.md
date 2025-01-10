@@ -56,7 +56,7 @@ The installation process follows the steps outlined in the RSVD-Delta-t README, 
 A key difference in compiling PETSc/SLEPc for RSVD-LU is the inclusion of the **MUMPS** package, required for parallel computation of LU decomposition for sparse matrices. Below is a recommended PETSc configuration:
 
 ```bash
-./configure --with-debugging=0 --with-scalar-type=complex \
+./configure --with-debugging=0 --with-scalar-type=complex
 --with-64-bit-indices PETSC_ARCH=complex-opt --download-mumps
 ```
 
