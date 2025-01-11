@@ -5,7 +5,7 @@
 PetscErrorCode SVD4Forcing(RSVD_matrices *RSVDM, RSVD_vars *RSVD, Weight_matrices *Weight, Resolvent_matrices *Res, Directories *dirs, PetscInt iw)
 {
 	/*
-		Performs the economy SVD of matrices of size N \times k for Nw frequencies
+		Performs the economy SVD of a matrix of size N \times k
 	*/
 	
 	PetscErrorCode        ierr;
