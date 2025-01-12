@@ -149,29 +149,7 @@ OutputMatrixDir:    /path/to/C # expected a matrix saved in binary format
 
 ```
 
-### Important notes:
-
-- For boolean flags, the following values are equivalent:
-  - `False`, `false`, and `0` all represent `false`
-  - `True`, `true`, and `1` all represent `true`
-
-- Mathematical expressions in inputs are not allowed; for example, `2 x 2`, `√3`, and `π` will generate errors.
-
-- For integer values, ensure only integers are provided. Decimal values such as `2.5`, `1.`, or `3.14` will cause errors.
-
-- When using discounting, ensure `beta` is positive.
-
-- Error messages will be displayed, and the simulation will terminate if an error occurs.
-
-## Prerequisite modules
-
-Make sure you have the following prerequisite modules loaded/installed:
-
-- **OpenMPI** (or another MPI package such as MPICH)
-- A **C++ compiler**
-- **PETSc** and **SLEPc** packages
-
-## RSVD-LU variables
+## Variables description
 
 - `RootDir`: Specifies the root directory path for the simulation.
 - `ResultsDir`: Defines the path to the results directory where output files will be saved. This directory must exist within `RootDir`.
@@ -205,6 +183,20 @@ Make sure you have the following prerequisite modules loaded/installed:
 - `DiscFlg`: A boolean flag indicating whether to use a discounting strategy.
 - `beta`: Specifies the `beta` value when `DiscFlg = true`. It is ignored if `DiscFlg = false`.
 
+### Important notes:
+
+- For boolean flags, the following values are equivalent:
+  - `False`, `false`, and `0` all represent `false`
+  - `True`, `true`, and `1` all represent `true`
+
+- Mathematical expressions in inputs are not allowed; for example, `2 x 2`, `√3`, and `π` will generate errors.
+
+- For integer values, ensure only integers are provided. Decimal values such as `2.5`, `1.`, or `3.14` will cause errors.
+
+- When using discounting, ensure `beta` is positive.
+
+- Error messages will be displayed, and the simulation will terminate if an error occurs.
+
 ## Saving resolvent modes and gains
 
 - A folder is created in the results directory with a fixed prefix `RSVDLU_ResolventModes_<int>`, where `<int>` is an integer starting from 0. If `RSVDLU_ResolventModes_i` exists, the code increments the integer until a unique folder name is found, ensuring that results from different simulations are not overwritten.
@@ -212,6 +204,14 @@ Make sure you have the following prerequisite modules loaded/installed:
 - For each frequency, response modes (each of size `N × k`) are saved as `U_hat_iw<int>_allK`, where `<int>` represents the integer index of the frequency. Similarly, forcing modes (each of size `N × k`) are saved as `V_hat_iw<int>_allK`. The corresponding gains, containing `k` singular values for each frequency, are saved as `S_hat_iw<int>_allK` of size `k × 1`.
 - The indices correspond to frequencies within $\Omega = \omega_{\text{min}}:dw:\omega_{\text{max}}$, with the starting index set to 1.
 - For instance, `U_hat_iw1_allK`, `V_hat_iw1_allK`, and `S_hat_iw1_allK` contain the response, forcing, and gains, respectively, associated with the first frequency ($\omega$ = `w_min`).
+
+## Prerequisite modules
+
+Make sure you have the following prerequisite modules loaded/installed:
+
+- **OpenMPI** (or another MPI package such as MPICH)
+- A **C++ compiler**
+- **PETSc** and **SLEPc** packages
 
 ## Makefile usage
 
