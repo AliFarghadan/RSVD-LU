@@ -200,7 +200,6 @@ Make sure you have the following prerequisite modules loaded/installed:
     - elapsed time of the LU decomposition at each frequency
     - Elapsed time of QR and SVDs
     - Elapsed time of saving modes
-    - Estimated remaining time
   - `Display = 2`: Detailed output, including everything from `Display = 1`, plus the elapsed time of solving LU-decomposed system for every test vector.
 - `RandSeed`: Indicates the seed number for random number generation. Using the same number of cores and `RandSeed` value allows for repeatable results in simulations.
 - `DiscFlg`: A boolean flag indicating whether to use a discounting strategy.
