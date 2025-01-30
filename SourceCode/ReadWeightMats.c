@@ -11,7 +11,7 @@ PetscErrorCode ReadWeightMats(RSVD_vars *RSVD, Weight_matrices *Weight, Director
 		- B is a matrix of size N x Nb (Nb can equal N).
 		- W_f_sqrt_inv is a matrix of size Nb x Nb.
 		- C is a matrix of size Nc x N (Nc can equal N).
-		- W_q_sqrt_inv and W_q_sqrt are a matrices of size Nc x Nc.
+		- W_q_sqrt_inv and W_q_sqrt are matrices of size Nc x Nc.
 
 		If any of these matrix dimensions mismatch the expected sizes, an error will occur.
 		If the flag is off, an identity matrix is assumed.
@@ -89,8 +89,10 @@ PetscErrorCode ReadWeightMats(RSVD_vars *RSVD, Weight_matrices *Weight, Director
 		if (col2 != RSVD->N) SETERRQ(PETSC_COMM_WORLD,PETSC_ERR_USER,"Output matrix (C) must have %d columns, current size = %d x %d", (int)RSVD->N, (int)row2, (int)col2);CHKERRQ(ierr);
 		RSVD->Nc = row2;
 		if (row2 != row1) SETERRQ(PETSC_COMM_WORLD,PETSC_ERR_USER,"Size mismatch between output matrix (C) and output weight matrix (W_q_sqrt), %d != %d", (int)row2, (int)row1);CHKERRQ(ierr);
-		ierr = MatGetSize(Weight->W_q_sqrt_inv,&row1,NULL);CHKERRQ(ierr);
-		if (row2 != row1) SETERRQ(PETSC_COMM_WORLD,PETSC_ERR_USER,"Size mismatch between output matrix (C) and inverse output weight matrix (W_q_sqrt_inv), %d != %d", (int)row2, (int)row1);CHKERRQ(ierr);
+		if (Weight->InvOutputWeightFlg) {
+			ierr = MatGetSize(Weight->W_q_sqrt_inv,&row1,NULL);CHKERRQ(ierr);
+			if (row2 != row1) SETERRQ(PETSC_COMM_WORLD,PETSC_ERR_USER,"Size mismatch between output matrix (C) and inverse output weight matrix (W_q_sqrt_inv), %d != %d", (int)row2, (int)row1);CHKERRQ(ierr);
+		}
 	} else {
 		RSVD->Nc = RSVD->N;
 		if (Weight->OutputWeightFlg && RSVD->Nc != row1) SETERRQ(PETSC_COMM_WORLD,PETSC_ERR_USER,"Size mismatch between output matrix (C) and output weight matrix (W_q_sqrt)");CHKERRQ(ierr);
