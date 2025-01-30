@@ -47,8 +47,6 @@ PetscErrorCode SVD4Response(RSVD_matrices *RSVDM, RSVD_vars *RSVD, Weight_matric
 	ierr = MatCopy(Y,RSVDM->Y_hat,SAME_NONZERO_PATTERN);CHKERRQ(ierr);
 	ierr = MatDestroy(&Y);CHKERRQ(ierr);
 
-	ierr = MatDuplicate(RSVDM->Y_hat,MAT_COPY_VALUES,&Res->U_hat);CHKERRQ(ierr);
-
 	/*
 		Prints out the elapsed time
 	*/
@@ -66,12 +64,13 @@ PetscErrorCode SVD4Response(RSVD_matrices *RSVDM, RSVD_vars *RSVD, Weight_matric
 	ierr = PetscTime(&t1);CHKERRQ(ierr);
 	if (RSVD->Display) ierr = PetscPrintf(PETSC_COMM_WORLD,"\n*** Saving the response modes begins! ***\n");CHKERRQ(ierr);
 
-	if (Weight->InvOutputWeightFlg) ierr = MatMatMult(Weight->W_q_sqrt_inv,Res->U_hat,MAT_REUSE_MATRIX,PETSC_DEFAULT,&Res->U_hat);CHKERRQ(ierr);
+	if (Weight->InvOutputWeightFlg) ierr = MatMatMult(Weight->W_q_sqrt_inv,RSVDM->Y_hat,MAT_INITIAL_MATRIX,PETSC_DEFAULT,&Res->U_hat);CHKERRQ(ierr);
 	ierr = PetscSNPrintf((char*)&dirs->IO_dir,PETSC_MAX_PATH_LEN,"%s%s%d%s",dirs->FolderDir,"U_hat_iw",(int) iw+1,"_allK");CHKERRQ(ierr);
 	ierr = PetscViewerBinaryOpen(PETSC_COMM_WORLD,dirs->IO_dir,FILE_MODE_WRITE,&fd);CHKERRQ(ierr);
 	ierr = MatView(Res->U_hat,fd);CHKERRQ(ierr);
 
 	ierr = MatDestroy(&Res->U_hat);CHKERRQ(ierr);
+	ierr = MatDestroy(&RSVDM->Y_hat);CHKERRQ(ierr);
 
 	/*
 		Prints out the elapsed time and exits
