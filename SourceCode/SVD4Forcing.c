@@ -12,6 +12,7 @@ PetscErrorCode SVD4Forcing(RSVD_matrices *RSVDM, RSVD_vars *RSVD, Weight_matrice
 	PetscInt              ik, hh, mm, ss;
 	PetscReal             sigma;
 	Vec                   V;
+	Mat                   Y;
 	SVD                   svd;
 	PetscViewer           fd;
 	PetscLogDouble        t1, t2;
@@ -49,8 +50,12 @@ PetscErrorCode SVD4Forcing(RSVD_matrices *RSVDM, RSVD_vars *RSVD, Weight_matrice
 	ierr = MatAssemblyBegin(Res->V_hat,MAT_FINAL_ASSEMBLY);CHKERRQ(ierr);
 	ierr = MatAssemblyEnd(Res->V_hat,MAT_FINAL_ASSEMBLY);CHKERRQ(ierr);
 
-	if (Weight->InvInputWeightFlg)  ierr = MatMatMult(Weight->W_f_sqrt_inv,Res->V_hat,MAT_REUSE_MATRIX,PETSC_DEFAULT,&Res->V_hat);CHKERRQ(ierr);
-	
+	if (Weight->InvInputWeightFlg)  {
+		ierr = MatMatMult(Weight->W_f_sqrt_inv,Res->V_hat,MAT_INITIAL_MATRIX,PETSC_DEFAULT,&Y);CHKERRQ(ierr);
+		ierr = MatCopy(Y,Res->V_hat,SAME_NONZERO_PATTERN);CHKERRQ(ierr);
+		ierr = MatDestroy(&Y);CHKERRQ(ierr);
+	}
+
 	/*
 		Prints out the elapsed time
 	*/
