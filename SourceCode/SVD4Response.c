@@ -68,9 +68,7 @@ PetscErrorCode SVD4Response(RSVD_matrices *RSVDM, RSVD_vars *RSVD, Weight_matric
 	ierr = PetscSNPrintf((char*)&dirs->IO_dir,PETSC_MAX_PATH_LEN,"%s%s%d%s",dirs->FolderDir,"U_hat_iw",(int) iw+1,"_allK");CHKERRQ(ierr);
 	ierr = PetscViewerBinaryOpen(PETSC_COMM_WORLD,dirs->IO_dir,FILE_MODE_WRITE,&fd);CHKERRQ(ierr);
 	ierr = MatView(Res->U_hat,fd);CHKERRQ(ierr);
-
 	ierr = MatDestroy(&Res->U_hat);CHKERRQ(ierr);
-	ierr = MatDestroy(&RSVDM->Y_hat);CHKERRQ(ierr);
 
 	/*
 		Prints out the elapsed time and exits
